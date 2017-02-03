@@ -1,13 +1,11 @@
 (fn [state time-left]
-  (let [command-options [[{:cmd \"SMOKESCREEN\"}]
-                         [{:cmd  \"SHOOT\"
-                           :metadata  {:direction (rand-nth  [0 1 2 3 4 5 6 7])}}]
-                         [{:cmd  \"MOVE\"
-                           :metadata  {:direction (rand-nth  [0 1 2 3 4 5 6 7])}}]
-                         [{:cmd  \"MOVE\"
-                           :metadata  {:direction (rand-nth  [0 1 2 3 4 5 6 7])}}]
-                         [{:cmd  \"MOVE\"
-                           :metadata  {:direction (rand-nth  [0 1 2 3 4 5 6 7])}}]
-                         [{:cmd  \"MOVE\"
-                           :metadata  {:direction (rand-nth  [0 1 2 3 4 5 6 7])}}]]]
-    {:commands (rand-nth command-options)}))
+  (def turn-directions [:right :left :about-face])
+
+  (let [command-options [{:command {:action :move
+                                    :metadata {}}}
+                         {:command {:action :turn
+                                    :metadata (rand-nth turn-directions)}}
+                         {:command {:action :shoot
+                                    :metadata {}}}]]
+    {:command (rand-nth command-options)
+     :state {:test true}}))
