@@ -1,4 +1,4 @@
-((time_left, state) => ({
+((state, time_left) => ({
     command: {
         action: "turn",
         metadata: {
