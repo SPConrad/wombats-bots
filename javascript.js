@@ -8,4 +8,4 @@
     state: {
         hello: "world"
     }
-});
+}));
